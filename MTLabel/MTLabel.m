@@ -181,7 +181,6 @@ CGRect CTLineGetTypographicBoundsAsRect(CTLineRef line, CGPoint lineOrigin) {
     self._lineHeight = _font.lineHeight;
     self._textAlignment = MTLabelTextAlignmentLeft;
     self.contentMode = UIViewContentModeRedraw;
-    self.contentStretch = CGRectMake(1, 1, 0, 0);
     self.clipsToBounds = NO;
     [self setOpaque:NO];
 }
@@ -472,7 +471,7 @@ CGRect CTLineGetTypographicBoundsAsRect(CTLineRef line, CGPoint lineOrigin) {
                                   self.frame.size.width, 
                                   roundf(_textHeight))];
         
-        dispatch_async(dispatch_get_current_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self setNeedsDisplay];
         });
     }
